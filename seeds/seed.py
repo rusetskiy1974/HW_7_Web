@@ -70,7 +70,7 @@ def create_grades(grades=1):
             session.add(grade_)
 
 
-if __name__ == '__main__':
+def main():
     try:
         create_group(GROUPS)
         create_teachers(TEACHERS)
@@ -89,3 +89,6 @@ if __name__ == '__main__':
     finally:
         session.close()
 
+
+if __name__ == '__main__':
+    main()

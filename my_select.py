@@ -65,15 +65,15 @@ def select_03():
     """
 
     result = ((
-        session.query(Group.name, Subject.name, func.round(func.avg(Grade.grade), 2).label('average_grade'))
-        .select_from(Group)
-        .join(Student)
-        .join(Grade)
-        .join(Subject)
-        .filter(Subject.id == 2)
-        .group_by(Group.name, Subject.name)
-        .order_by(desc('average_grade')))
-        .all())
+                  session.query(Group.name, Subject.name, func.round(func.avg(Grade.grade), 2).label('average_grade'))
+                  .select_from(Group)
+                  .join(Student)
+                  .join(Grade)
+                  .join(Subject)
+                  .filter(Subject.id == 2)
+                  .group_by(Group.name, Subject.name)
+                  .order_by(desc('average_grade')))
+              .all())
     return result
 
 
@@ -250,7 +250,7 @@ def select_12():
     return result
 
 
-if __name__ == '__main__':
+def main():
     print('1. Знайти 5 студентів із найбільшим середнім балом з усіх предметів.')
     [print(el) for el in select_01()]
     print('\n2. Знайти студента із найвищим середнім балом з певного предмета.')
@@ -275,3 +275,7 @@ if __name__ == '__main__':
     [print(el) for el in select_11()]
     print('\n12. Оцінки студентів у певній групі з певного предмета на останньому занятті.')
     [print(el) for el in select_12()]
+
+
+if __name__ == '__main__':
+    main()
